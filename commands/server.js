@@ -7,6 +7,10 @@ exports.builder = {
     // port
     p: {
       default: process.env.PORT || 8080
+    },
+    // target project folder to use
+    t:{
+      default: path.join(process.cwd(), '_posts_crypt')
     }
 };
 exports.handler = function (argv) {
@@ -15,9 +19,11 @@ exports.handler = function (argv) {
     
     let app = express();
     
+    app.set('dir_posts_crypt', path.resolve(argv.t));
+    
     app.get('/', (req, res) => {
         
-        res.send('jskey-webview');
+        res.send('jskey-webview: ' + app.get('dir_posts_crypt'));
         
     });
     
