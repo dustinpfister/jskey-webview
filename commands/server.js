@@ -21,7 +21,7 @@ exports.handler = function (argv) {
     
     app.set('dir_target', path.resolve(argv.t));
     
-    app.use('/posts', require('./server_middleware/get_posts.js'));
+    app.use('/posts', require('./server_middleware/get_posts/index.js'));
     
     app.get('/', (req, res) => {
         
