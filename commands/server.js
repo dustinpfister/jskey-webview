@@ -21,6 +21,8 @@ exports.handler = function (argv) {
     
     app.set('dir_posts_crypt', path.resolve(argv.t));
     
+    app.use('/posts', require('./server_middleware/get_posts.js'));
+    
     app.get('/', (req, res) => {
         
         res.send('jskey-webview: ' + app.get('dir_posts_crypt'));
