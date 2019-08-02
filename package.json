@@ -1,0 +1,23 @@
+{
+  "name": "jskey-webview",
+  "version": "0.0.0",
+  "description": "The aim of this project is to provide a webview that I can use with mu other jskey tools to create and maintain websites.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dustinpfister/jskey-webview.git"
+  },
+  "author": "Dustin Pfister",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dustinpfister/jskey-webview/issues"
+  },
+  "homepage": "https://github.com/dustinpfister/jskey-webview#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "yargs": "^13.3.0"
+  }
+}
