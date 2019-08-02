@@ -7,9 +7,10 @@ router = module.exports = new express.Router();
 
 router.get('/', (req, res) => {
     
-    let dir_posts_crypt = path.join(req.app.get('dir_target'), '_posts_crypt');
+    let dir_posts_crypt = path.join(req.app.get('dir_target'), '_posts_crypt'),
+    dir_forFile = path.join(__dirname, 'forfile-filename.js');
     
-    let posts = spawn('jskey-walk', ['walk', '-t', dir_posts_crypt]);
+    let posts = spawn('jskey-walk', ['walk', '-t', dir_posts_crypt, '-s', dir_forFile]);
     
     let out = '';
     posts.stdout.on('data', (data) => {
