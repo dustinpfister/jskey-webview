@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "The aim of this project is to provide a webview that I can use with mu other jskey tools to create and maintain websites.",
   "main": "index.js",
+  "bin" : {
+    "jskey-webview": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
