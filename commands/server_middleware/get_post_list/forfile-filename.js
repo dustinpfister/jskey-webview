@@ -2,6 +2,7 @@
 // that just prints the fileName for
 // each file found
 module.exports = (item, next) =>{
-    console.log(item.fileName);
+    //console.log(item.fileName);
+    process.stdout.write(item.fileName);
     next();
 };

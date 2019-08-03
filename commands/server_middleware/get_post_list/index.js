@@ -6,23 +6,28 @@ router = module.exports = new express.Router();
 
 router.get('/', (req, res) => {
     
-    let dir_posts_crypt = path.join(req.app.get('dir_target'), '_posts_crypt'),
+    let dir_target = req.app.get('dir_target'),
+    dir_posts_crypt = path.join(dir_target, '_posts_crypt'),
     dir_forFile = path.join(__dirname, 'forfile-filename.js');
     
     let posts = spawn('jskey-walk', ['walk', '-t', dir_posts_crypt, '-s', dir_forFile]);
     
-    let out = '';
+    //let out = '';
+    let fileNames = [];
     posts.stdout.on('data', (data) => {
-        
-        console.log(data.toString());
-        out += data.toString();
-        
+        //out += data.toString();
+        fileNames.push(data.toString());
     });
     
     posts.on('close', (code) => {
         
-      // res.send('_posts_crypt path: ' + dir_posts_crypt);
-      res.send(out);
+        // res.send('_posts_crypt path: ' + dir_posts_crypt);
+        res.json({
+            dir_target: dir_target,
+            dir_posts_crypt: dir_posts_crypt,
+            dir_forFile: dir_forFile,
+            fileNames : fileNames  
+        });
       
     });
     
