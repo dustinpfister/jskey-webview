@@ -19,17 +19,21 @@ exports.handler = function (argv) {
     
     let app = express();
     
+    // app settings
     app.set('dir_target', path.resolve(argv.t));
     
+    // static paths
     app.use('/js', express.static(path.join(__dirname, 'server_public/js')));
+    
+    // middleware
     app.use('/posts', require(path.join( __dirname, 'server_middleware/get_post_list/index.js')));
     
+    // root path
     app.get('/', (req, res) => {
-        
         res.send('jskey-webview: ' + app.get('dir_target'));
-        
     });
     
+    // start server on port
     app.listen(argv.p, () => {
         console.log('jskey-webview is now up on port: ' + argv.p);
     });
