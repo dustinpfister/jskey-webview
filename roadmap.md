@@ -4,7 +4,7 @@
   * (done) a /posts path web view working that just displays a list of files in a _posts_crypt folder
   * (done) all middlewares should have there own folder to keep all assets togeather for the middleware
   * (done) custom forFile jskey-walk file for get_post_list middleware
-  * the get_post_list middleware sends json
+  * (done) the get_post_list middleware sends json
   * public folder for static assets
   * use vuejs for client system framework
   * a middleware file that works with jskey-crypt to display unciphered content

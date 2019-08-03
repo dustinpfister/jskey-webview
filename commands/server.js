@@ -21,7 +21,8 @@ exports.handler = function (argv) {
     
     app.set('dir_target', path.resolve(argv.t));
     
-    app.use('/posts', require('./server_middleware/get_post_list/index.js'));
+    app.use('/js', express.static(path.join(__dirname, 'server_public/js')));
+    app.use('/posts', require(path.join( __dirname, 'server_middleware/get_post_list/index.js')));
     
     app.get('/', (req, res) => {
         
