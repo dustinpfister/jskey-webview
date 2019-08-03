@@ -4,7 +4,6 @@ path = require('path'),
 express = require('express'),
 router = module.exports = new express.Router();
 
-
 router.get('/', (req, res) => {
     
     let dir_posts_crypt = path.join(req.app.get('dir_target'), '_posts_crypt'),
@@ -15,7 +14,7 @@ router.get('/', (req, res) => {
     let out = '';
     posts.stdout.on('data', (data) => {
         
-        //console.log(data.toString());
+        console.log(data.toString());
         out += data.toString();
         
     });
