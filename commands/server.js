@@ -26,7 +26,15 @@ exports.handler = function (argv) {
     app.use('/js', express.static(path.join(__dirname, 'server_public/js')));
     
     // middleware
-    app.use('/posts', require(path.join( __dirname, 'server_middleware/get_post_list/index.js')));
+    let dir_mw = path.join(__dirname, 'server_middleware');
+    app.use('/post-list', require(path.join( dir_mw, 'get_post_list/index.js')));
+    app.use('/post', 
+        require(path.join( dir_mw, 'get_post/index.js'))({
+            password: 'spaceballs-0123456789-abcdefghi!',
+            random: '0123456789abcdef'
+        })
+    );
+    console.log(  );
     
     // root path
     app.get('/', (req, res) => {
