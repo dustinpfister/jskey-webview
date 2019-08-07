@@ -3,8 +3,8 @@
   * the post_delete middleware can be used to delete a post from the edit path
 
 ## 0.1.x - Alpha II - edit path and post_save middleware
-  * ejs added to package.json which will be used for server side rendering
-  * server_view folder wil be used for ejs templates
+  * (done) ejs added to package.json which will be used for server side rendering
+  * (done) server_view folder wil be used for ejs templates
   * start /edit path that can be used to edit a post
   * start new post_save middleware that creates, and saves edited posts.
   * posts can be created in /edit path

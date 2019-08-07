@@ -40,6 +40,9 @@ exports.handler = function (argv) {
     let app = express();
     // app settings
     app.set('dir_target', path.resolve(argv.t));
+    app.set('view engine', 'ejs');
+    app.set('views', path.join(__dirname, 'server_views'));
+    
     // get key
     getKey(app.get('dir_target'))
     .then((key) => {
@@ -51,7 +54,8 @@ exports.handler = function (argv) {
         app.use('/post', require(path.join( dir_mw, 'get_post/index.js'))(key));
         // root path
         app.get('/', (req, res) => {
-            res.send('jskey-webview: ' + app.get('dir_target'));
+            //res.send('jskey-webview: ' + app.get('dir_target'));
+            res.render('index',{});
         });
         // start server on port
         app.listen(argv.p, () => {
