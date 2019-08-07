@@ -52,11 +52,8 @@ exports.handler = function (argv) {
         let dir_mw = path.join(__dirname, 'server_middleware');
         app.use('/post-list', require(path.join( dir_mw, 'get_post_list/index.js')));
         app.use('/post', require(path.join( dir_mw, 'get_post/index.js'))(key));
-        // root path
-        app.get('/', (req, res) => {
-            //res.send('jskey-webview: ' + app.get('dir_target'));
-            res.render('index',{});
-        });
+        // render   
+        app.use(require(path.join( dir_mw, 'render/index.js') ));
         // start server on port
         app.listen(argv.p, () => {
             console.log('jskey-webview is now up on port: ' + argv.p);
