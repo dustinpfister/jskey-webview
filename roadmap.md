@@ -1,10 +1,18 @@
-## 0.1.x - Alpha II
+## 0.2.x - post_delete middleware
+  * new middleware started called post_delete
+  * the post_delete middleware can be used to delete a post
+
+## 0.1.x - Alpha II - edit path and post_save middleware
+  * ejs added to package.json which will be used for server side rendering
+  * server_view folder wil be used for ejs templates
   * start /edit path that can be used to edit a post
+  * start new post_save middleware that creates, and saves edited posts.
   * posts can be created in /edit path
-  * posts can be deleted in /edit path
   * posts can be edited and saved in edit path
+  * rename get_post to post_get
+  * rename get_post_list to post_list
   
-## 0.0.x - Alpha I - first release
+## 0.0.29 - Alpha I - first release
   * (done) server command started
   * (done) a get_post_list middleware that just lists posts in the _posts_crypt folder
   * (done) a /posts path web view working that just displays a list of files in a _posts_crypt folder
