@@ -1,5 +1,6 @@
 // Get a posts content
 let spawn = require('child_process').spawn,
+fs = require('fs'),
 path = require('path'),
 express = require('express'),
 router = new express.Router();
@@ -25,10 +26,38 @@ module.exports = function(opt){
             pathFile:  path_file 
         };
         
-        res.json(info);
+        //res.json(info);
     
-    //let posts = spawn('jskey-crypt', ['pipe', '-t', dir_posts_crypt, '-s', dir_forFile]);
+        let crypt = spawn('jskey-crypt', ['pipe', '-p', opt.password, '-s', opt.random]);
     
+        let text = '';
+        crypt.stdout.on('data', (data)=>{
+            console.log(data.toString());
+            text += data.toString();
+            
+            // should not be done here
+            // but it seems to work okay for now
+            crypt.stdin.end();
+            
+        });
+        
+        // send text when
+        crypt.on('close', ()=>{
+            
+            res.send(text);
+            
+        });
+        
+        //console.log(crypt.stdio);
+        
+        fs.readFile(path_file,'utf8', (e, data)=>{
+            crypt.stdin.write(data,'utf8', ()=>{
+                
+                //crypt.kill();
+                console.log('okay wrote it');
+            });
+        });
+        
     /*
     //let out = '';
     let fileNames = [];
