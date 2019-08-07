@@ -18,12 +18,14 @@ module.exports = function(opt){
         fileName = path.basename(req.path),
         path_file = path.join(dir_posts_crypt, fileName);
         
-        res.send(
-            'password: ' + opt.password + '<br>'+
-            'random: ' + opt.random + '<br>' +
-            'fileName: ' + fileName + '<br>' +
-            'path file: ' + path_file 
-        );
+        let info = {
+            password: opt.password,
+            random: opt.random,
+            fileName:  fileName,
+            pathFile:  path_file 
+        };
+        
+        res.json(info);
     
     //let posts = spawn('jskey-crypt', ['pipe', '-t', dir_posts_crypt, '-s', dir_forFile]);
     
