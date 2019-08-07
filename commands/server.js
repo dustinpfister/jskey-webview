@@ -1,5 +1,27 @@
 let express = require('express'),
+fs = require('fs'),
+yaml = require('js-yaml'),
 path = require('path');
+
+// get key.yaml from target folder
+let getKey = (target)=>{
+    return new Promise((resolve,reject)=>{
+        let path_key = path.join(target,'key.yaml');
+        fs.readFile(path_key, 'utf8', (e, data)=>{
+            if(e){
+                reject(e);
+            }else{
+                let key = {};
+                try{
+                    key = yaml.safeLoad(data);
+                    resolve(key);
+                }catch(e){
+                    reject(e);
+                }
+            }
+        });
+    });
+};
 
 exports.command = 'server';
 exports.describe = 'server command';
@@ -15,7 +37,6 @@ exports.builder = {
 };
 exports.handler = function (argv) {
     console.log('> jskey-webview: server command:');
-    console.log(argv.p)
     
     let app = express();
     
@@ -44,6 +65,15 @@ exports.handler = function (argv) {
     // start server on port
     app.listen(argv.p, () => {
         console.log('jskey-webview is now up on port: ' + argv.p);
+        
+        getKey(app.get('dir_target'))
+        .then((key) => {
+            console.log(key)
+        })
+        .catch((e)=>{
+            console.warn(e.message);
+        });
+        
     });
     
 };
