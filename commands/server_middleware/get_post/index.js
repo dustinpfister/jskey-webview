@@ -32,7 +32,7 @@ module.exports = function(opt){
     
         let text = '';
         crypt.stdout.on('data', (data)=>{
-            console.log(data.toString());
+            //console.log(data.toString());
             text += data.toString();
             
             // should not be done here
@@ -43,7 +43,8 @@ module.exports = function(opt){
         
         // send text when
         crypt.on('close', ()=>{
-            
+            console.log(text);
+            res.set('Content-Type', 'text/plain');
             res.send(text);
             
         });
