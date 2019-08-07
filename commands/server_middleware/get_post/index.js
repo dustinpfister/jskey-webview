@@ -11,13 +11,17 @@ module.exports = function(opt){
     opt.password = opt.password || ''; // the password to be used with jskey-crypt
     opt.random = opt.random || ''; // the salt value to be used with jskey-crypt
 
-    router.get('/', (req, res) => {
+    router.get(/\.md$/, (req, res) => {
     
         let dir_target = req.app.get('dir_target'),
         dir_posts_crypt = path.join(dir_target, '_posts_crypt'),
         dir_forFile = path.join(__dirname, 'forfile-filename.js');
         
-        res.send('password: ' + opt.password + '<br> random: ' + opt.random);
+        res.send(
+            'password: ' + opt.password + '<br>'+
+            'random: ' + opt.random + '<br>' +
+            'path: ' + path.basename(req.path)
+        );
     
     //let posts = spawn('jskey-crypt', ['pipe', '-t', dir_posts_crypt, '-s', dir_forFile]);
     
