@@ -35,7 +35,7 @@ module.exports = function(opt){
             //console.log(data.toString());
             text += data.toString();
             
-            // should not be done here
+            // !!! should not be done here
             // but it seems to work okay for now
             crypt.stdin.end();
             
@@ -54,8 +54,8 @@ module.exports = function(opt){
         fs.readFile(path_file,'utf8', (e, data)=>{
             crypt.stdin.write(data,'utf8', ()=>{
                 
-                //crypt.kill();
-                console.log('okay wrote it');
+                // !!! do i event need this callback for anything?
+                
             });
         });
         

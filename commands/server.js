@@ -37,43 +37,28 @@ exports.builder = {
 };
 exports.handler = function (argv) {
     console.log('> jskey-webview: server command:');
-    
     let app = express();
-    
     // app settings
     app.set('dir_target', path.resolve(argv.t));
-    
-    // static paths
-    app.use('/js', express.static(path.join(__dirname, 'server_public/js')));
-    
-    // middleware
-    let dir_mw = path.join(__dirname, 'server_middleware');
-    app.use('/post-list', require(path.join( dir_mw, 'get_post_list/index.js')));
-    app.use('/post', 
-        require(path.join( dir_mw, 'get_post/index.js'))({
-            password: 'spaceballs-0123456789-abcdefghi!',
-            random: '0123456789abcdef'
-        })
-    );
-    console.log(  );
-    
-    // root path
-    app.get('/', (req, res) => {
-        res.send('jskey-webview: ' + app.get('dir_target'));
-    });
-    
-    // start server on port
-    app.listen(argv.p, () => {
-        console.log('jskey-webview is now up on port: ' + argv.p);
-        
-        getKey(app.get('dir_target'))
-        .then((key) => {
-            console.log(key)
-        })
-        .catch((e)=>{
-            console.warn(e.message);
+    // get key
+    getKey(app.get('dir_target'))
+    .then((key) => {
+        // static paths
+        app.use('/js', express.static(path.join(__dirname, 'server_public/js')));
+        // middleware
+        let dir_mw = path.join(__dirname, 'server_middleware');
+        app.use('/post-list', require(path.join( dir_mw, 'get_post_list/index.js')));
+        app.use('/post', require(path.join( dir_mw, 'get_post/index.js'))(key));
+        // root path
+        app.get('/', (req, res) => {
+            res.send('jskey-webview: ' + app.get('dir_target'));
         });
-        
+        // start server on port
+        app.listen(argv.p, () => {
+            console.log('jskey-webview is now up on port: ' + argv.p);
+        });
+    })
+    .catch((e)=>{
+        console.warn(e.message);
     });
-    
 };
