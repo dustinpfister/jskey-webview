@@ -14,5 +14,5 @@
   * (done) public folder for static assets
   * (done) add vuejs for client system framework to be used in web views
   * (done) a middleware file that works with jskey-crypt to display deciphered content
-  * server command reads key.yaml
+  * (done) server command reads key.yaml
 
