@@ -1,6 +1,6 @@
-## 0.2.x - post_delete middleware
+## 0.2.x - Alpha III - post_delete middleware
   * new middleware started called post_delete
-  * the post_delete middleware can be used to delete a post
+  * the post_delete middleware can be used to delete a post from the edit path
 
 ## 0.1.x - Alpha II - edit path and post_save middleware
   * ejs added to package.json which will be used for server side rendering
