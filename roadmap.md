@@ -5,7 +5,7 @@
 ## 0.1.x - Alpha II - edit path and post_save middleware
   * (done) ejs added to package.json which will be used for server side rendering
   * (done) server_view folder wil be used for ejs templates
-  * start new render middleware that will contain a / and /edit path for starters.
+  * (done) start new render middleware that will contain a / and /edit path for starters.
   * start /edit path that can be used to edit a post
   * start new post_save middleware that creates, and saves edited posts.
   * posts can be created in /edit path
