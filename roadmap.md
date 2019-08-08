@@ -6,6 +6,8 @@
   * (done) ejs added to package.json which will be used for server side rendering
   * (done) server_view folder wil be used for ejs templates
   * (done) start new render middleware that will contain a / and /edit path for starters.
+  * (done) link to vuejs in main index.ejs file
+  * add or create an http client for vuejs to be used for the client system
   * start /edit path that can be used to edit a post
   * start new post_save middleware that creates, and saves edited posts.
   * posts can be created in /edit path

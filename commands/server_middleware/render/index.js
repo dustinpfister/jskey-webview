@@ -16,6 +16,10 @@ router.get('/edit', (req, res) => {
     res.render('index',res.viewLocals);
 });
 
+router.post('/edit', (req, res) => {
+    res.json({mess:'ping'});
+});
+
 router.get('/', (req, res) => {
     res.render('index',res.viewLocals);
 });
