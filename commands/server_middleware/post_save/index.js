@@ -53,6 +53,7 @@ module.exports = function(key){
             // when done
             crypt.on('close', ()=>{
                 
+                
                 // write the file
                 fs.writeFile(req.state.path_file, text, 'utf8', (e)=>{
                     

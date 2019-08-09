@@ -43,7 +43,7 @@ module.exports = function(opt){
         
         // send text when
         crypt.on('close', ()=>{
-            console.log(text);
+            //console.log(text);
             res.set('Content-Type', 'text/plain');
             res.send(text);
             
