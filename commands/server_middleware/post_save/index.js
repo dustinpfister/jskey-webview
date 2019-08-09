@@ -25,9 +25,11 @@ module.exports = function(key){
                 dir_target : req.app.get('dir_target')
             };
             req.state.dir_posts_crypt = path.join(req.state.dir_target, '_posts_crypt');
-    
+            req.path_file = path.join(req.state.dir_posts_crypt, req.body.fileName);
+            
             res.resObj = {
-                success: false
+                success: false,
+                path_file: req.path_file
             };
         
             next();
