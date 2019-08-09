@@ -5,15 +5,17 @@
 
 <script>
 
-var vue = new Vue({
+var Editor = new Vue({
   el: '#edit_post_list',
   template: '<div v-bind:style="constyle" >'+
         '<div>Posts: </div>'+
-        '<div v-for="(post, index) in posts"><p>{{post}}</p></div>'+
+        '<div v-for="(post, index) in posts"><p v-on:click="onPostLink" >{{post}}</p></div>'+
+        '<textarea>{{ text }}</textarea>' +
     '</div>',
   data : {
      constyle:'background:red;width:150px;padding:5px;',
-     posts : []
+     posts : [],
+     text: 'hi there'
   },
   methods:{
   
@@ -24,11 +26,26 @@ var vue = new Vue({
           console.log(res);
           this.$data.posts = res.body.fileNames;
         });
+     },
      
+     onPostLink : function(e){
+     
+        var url = '/post/' + e.target.innerText;
+        
+        this.$http.get(url)
+        .then(function(res){
+        
+           console.log(res);
+           this.$data.text = res.body;
+        
+        })
+     
+        console.log(url);
+        console.log(this);
      }
   }
 });
 
-vue.getList();
+Editor.getList();
 
 </script>
