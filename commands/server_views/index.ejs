@@ -7,7 +7,8 @@
         <h1>jsKey</h1>
         <p>layout: <%= layout %></p>
     </div>
-    <div id="content">
+    <div id="layout" style="padding:10px;">
+      <%- include(layout) %>
     </div>
     <script src="/js/vuejs/2.6.10/vue.min.js" ></script>
     <script src="/js/vue-resource/1.5.1/vue-resource.min.js" ></script>
