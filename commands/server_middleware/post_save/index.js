@@ -25,11 +25,11 @@ module.exports = function(key){
                 dir_target : req.app.get('dir_target')
             };
             req.state.dir_posts_crypt = path.join(req.state.dir_target, '_posts_crypt');
-            req.path_file = path.join(req.state.dir_posts_crypt, req.body.fileName);
+            req.state.path_file = path.join(req.state.dir_posts_crypt, req.body.fileName);
             
             res.resObj = {
                 success: false,
-                path_file: req.path_file
+                path_file: req.state.path_file
             };
         
             next();
@@ -50,16 +50,27 @@ module.exports = function(key){
                 crypt.stdin.end();
             });
             
-            // send text when
+            // when done
             crypt.on('close', ()=>{
-                res.success = true;
-                res.resObj.mess = text;
-                next(); 
+                
+                // write the file
+                fs.writeFile(req.state.path_file, text, 'utf8', (e)=>{
+                    
+                    if(e){
+                        res.mess = e.message;
+                        next();
+                    }else{
+                        res.resObj.success = true;
+                        res.resObj.mess = text;
+                        next();
+                    }
+                });
+                
+ 
             });
             
-             crypt.stdin.write(req.body.text,'utf8');
+            crypt.stdin.write(req.body.text,'utf8');
             
- 
         },
         
         (req,res)=>{
