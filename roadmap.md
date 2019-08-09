@@ -10,7 +10,7 @@
   * (done) add or create an http client for vuejs to be used for the client system
   * (done) start new post_save middleware that creates, and saves posts.
   * (done) posts can be edited and saved in /edit path
-  * posts can be created in /edit path
+  * (done) posts can be created in /edit path
   * rename get_post to post_get
   * rename get_post_list to post_list
   

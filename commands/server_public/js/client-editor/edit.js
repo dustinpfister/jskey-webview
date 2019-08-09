@@ -6,15 +6,16 @@ var Editor = new Vue({
             '<div v-for="(post, index) in posts"><p v-on:click="onPostLink" >{{post}}</p></div>'+
         '</div>' +
         '<div v-bind:style="editorStyle">' +
-            '<div>fileName: {{ fileName }}</div>'+
+            //'<div>fileName: {{ fileName }}</div>'+
             '<textarea v-model="text" rows="20" cols="80"></textarea><br>' +
+            '<input type="text" v-model="fileName"><br>' +
             '<input type="button" value="save" v-on:click="saveFile">'+
         '</div>' +
     '</div>',
   data : {
-      constyle:'background:#bf0000;padding:5px;',
-      listStyle: 'background:blue;width:200px;padding:5px;display:inline-block;vertical-align: top;',
-      editorStyle: 'background:green;padding:5px;display:inline-block;',
+      constyle:'background:#afafaf;padding:5px;',
+      listStyle: 'background:#8f8f8f;width:200px;padding:5px;display:inline-block;vertical-align: top;',
+      editorStyle: 'background:#8f8f8f;padding:5px;display:inline-block;',
       posts : [],
       text: 'hi there',
       fileName: 'new_post.md'
