@@ -1,8 +1,9 @@
 ## 0.2.x - Alpha III - post_delete middleware
   * new middleware started called post_delete
   * the post_delete middleware can be used to delete a post from the edit path
+  * display jsKey version number in header of webview
 
-## 0.1.x - Alpha II - edit path and post_save middleware
+## 0.1.28 - Alpha II - edit path and post_save middleware
   * (done) ejs added to package.json which will be used for server side rendering
   * (done) server_view folder wil be used for ejs templates
   * (done) start new render middleware that will contain a / and /edit path for starters.
@@ -11,8 +12,8 @@
   * (done) start new post_save middleware that creates, and saves posts.
   * (done) posts can be edited and saved in /edit path
   * (done) posts can be created in /edit path
-  * rename get_post to post_get
-  * rename get_post_list to post_list
+  * (done) rename get_post to post_get
+  * (done) rename get_post_list to post_list
   
 ## 0.0.29 - Alpha I - first release
   * (done) server command started
