@@ -50,7 +50,8 @@ exports.handler = function (argv) {
         app.use('/js', express.static(path.join(__dirname, 'server_public/js')));
         // middleware
         let dir_mw = path.join(__dirname, 'server_middleware');
-        app.use('/post-list', require(path.join( dir_mw, 'get_post_list/index.js')));
+        app.use('/post_list', require(path.join( dir_mw, 'get_post_list/index.js')));
+        app.use('/post_save', require(path.join( dir_mw, 'post_save/index.js'))(key));
         app.use('/post', require(path.join( dir_mw, 'get_post/index.js'))(key));
         // render   
         app.use(require(path.join( dir_mw, 'render/index.js') ));
