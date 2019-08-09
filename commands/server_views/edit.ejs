@@ -1,1 +1,19 @@
-<p>edit layout</p>
+<p>Edit</p>
+
+<div id="edit_post_list">
+</div>
+
+<script>
+
+var vue = new Vue({
+  el: '#edit_post_list',
+  template: '<div v-bind:style="constyle" >'+
+        '<div v-for="(post, index) in posts"><p>{{post}}</p></div>'+
+    '</div>',
+  data : {
+     constyle:'background:red;width:150px;padding:5px;',
+     posts : ['foo.md','bar.md']
+  }
+});
+
+</script>
