@@ -11,7 +11,6 @@ var Editor = new Vue({
         '<div>fileName: {{ fileName }}</div>'+
         '<div>Posts: </div>'+
         '<div v-for="(post, index) in posts"><p v-on:click="onPostLink" >{{post}}</p></div>'+
-        //'<textarea v-on:keyup="onTextChange" >{{ text }}</textarea>' +
         '<textarea v-model="text" ></textarea>' +
         '<input type="button" value="save" v-on:click="saveFile">'+
     '</div>',
@@ -31,27 +30,19 @@ var Editor = new Vue({
         });
      },
      
-     //onTextChange : function(e){
-     //    console.log(e.target.value);
-     //    this.$data.text = e.target.value;
-     //},
-     
      // what to do when a post link is clicked
      onPostLink : function(e){
         var fileName = e.target.innerText,
         url = '/post/' + fileName;
         this.$http.get(url)
         .then(function(res){
-           console.log(res);
            this.$data.text = res.body;
            this.$data.fileName = fileName;
         });
      },
      
+     // save the current file
      saveFile: function(e){
-         console.log('save file');
-         console.log(this.$data.text);
-         
          
          this.$http.post('/post_save', {
              fileName: this.$data.fileName,
