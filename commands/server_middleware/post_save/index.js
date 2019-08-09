@@ -5,6 +5,7 @@ path = require('path'),
 express = require('express'),
 router = new express.Router();
 
+router.use(require('body-parser').json());
 
 module.exports = function(key){
 
@@ -13,18 +14,32 @@ module.exports = function(key){
     key.password = key.password || ''; // the password to be used with jskey-crypt
     key.random = key.random || ''; // the salt value to be used with jskey-crypt
     
-    router.post('/', (req, res) => {
+    router.post('/', [(req, res, next) => {
         
         // state
-        let state = {
+        req.state = {
             key : key,
             dir_target : req.app.get('dir_target')
         };
-        state.dir_posts_crypt = path.join(state.dir_target, '_posts_crypt')
+        req.state.dir_posts_crypt = path.join(req.state.dir_target, '_posts_crypt');
     
-        res.json(state);
+        res.resObj = {
+            success: false,
+        };
+        
+        next();
     
-    });
+    },
+        (req,res)=>{
+            
+            
+        res.json(res.resObj);
+            
+        }
+    ]
+        
+        
+    );
 
     // return the router to be used
     // in main server.js file
