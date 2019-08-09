@@ -8,9 +8,9 @@
   * (done) start new render middleware that will contain a / and /edit path for starters.
   * (done) link to vuejs in main index.ejs file
   * (done) add or create an http client for vuejs to be used for the client system
-  * start new post_save middleware that creates, and saves edited posts.
+  * (done) start new post_save middleware that creates, and saves posts.
   * posts can be created in /edit path
-  * posts can be edited and saved in edit path
+  * posts can be edited and saved in /edit path
   * rename get_post to post_get
   * rename get_post_list to post_list
   
