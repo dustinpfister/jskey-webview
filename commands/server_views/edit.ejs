@@ -8,14 +8,16 @@
 var Editor = new Vue({
   el: '#edit_post_list',
   template: '<div v-bind:style="constyle" >'+
+        '<div>fileName: {{ fileName }}</div>'+
         '<div>Posts: </div>'+
         '<div v-for="(post, index) in posts"><p v-on:click="onPostLink" >{{post}}</p></div>'+
         '<textarea>{{ text }}</textarea>' +
     '</div>',
   data : {
-     constyle:'background:red;width:150px;padding:5px;',
+     constyle:'background:red;width:200px;padding:5px;',
      posts : [],
-     text: 'hi there'
+     text: 'hi there',
+     fileName: 'new_post.md'
   },
   methods:{
   
@@ -23,25 +25,19 @@ var Editor = new Vue({
      getList : function(){
         this.$http.get('post_list')
         .then(function(res){
-          console.log(res);
           this.$data.posts = res.body.fileNames;
         });
      },
      
+     // what to do when a post link is clicked
      onPostLink : function(e){
-     
-        var url = '/post/' + e.target.innerText;
-        
+        var fileName = e.target.innerText,
+        url = '/post/' + fileName;
         this.$http.get(url)
         .then(function(res){
-        
-           console.log(res);
            this.$data.text = res.body;
-        
+           this.$data.fileName = fileName;
         })
-     
-        console.log(url);
-        console.log(this);
      }
   }
 });
