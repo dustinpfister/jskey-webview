@@ -42,6 +42,7 @@ exports.handler = function (argv) {
     app.set('dir_target', path.resolve(argv.t));
     app.set('view engine', 'ejs');
     app.set('views', path.join(__dirname, 'server_views'));
+    app.set('jskey_version', require(path.join(__dirname, '../package.json')).version);
     
     // get key
     getKey(app.get('dir_target'))

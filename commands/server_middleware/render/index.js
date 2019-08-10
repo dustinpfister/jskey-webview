@@ -5,7 +5,8 @@ router = module.exports = new express.Router();
 router.use((req, res, next)=>{
     
     res.viewLocals = {
-      layout: 'root'  
+      layout: 'root',
+      version: req.app.get('jskey_version')
     };
     next();
     
