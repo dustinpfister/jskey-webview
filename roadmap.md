@@ -1,7 +1,7 @@
-## 0.2.x - Alpha III - post_delete middleware
+## 0.2.6 - Alpha III - post_delete middleware
   * (done) new middleware started called post_delete
   * (done) the post_delete middleware can be used to delete a post from the edit path
-  * display jsKey version number in header of webview
+  * (done) display jsKey version number in header of webview
 
 ## 0.1.28 - Alpha II - edit path and post_save middleware
   * (done) ejs added to package.json which will be used for server side rendering
