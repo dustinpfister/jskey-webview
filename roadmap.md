@@ -10,6 +10,7 @@
   * kwdb_create middleware can create a new keyword database in the _kwdb folder
   * new keyword database can be created from /kwdb webview
   * current database can be selected from /kwdb webview
+  * new kwdb_add and kwdb_remove middleware folders
   * keywords can be added to a database from /kwdb webview
   * keywords can be removed from a database from /kwdb webview
 

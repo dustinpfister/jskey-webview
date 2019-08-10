@@ -2,6 +2,8 @@
 let express = require('express'),
 router = module.exports = new express.Router();
 
+// create object to be used when
+// rendering a page server side
 router.use((req, res, next)=>{
     
     res.viewLocals = {
@@ -12,6 +14,12 @@ router.use((req, res, next)=>{
     
 });
 
+// root view
+router.get('/', (req, res) => {
+    res.render('index',res.viewLocals);
+});
+
+// edit view
 router.get('/edit', (req, res) => {
     res.viewLocals.layout = 'edit';
     res.render('index',res.viewLocals);
@@ -21,7 +29,8 @@ router.post('/edit', (req, res) => {
     res.json({mess:'ping'});
 });
 
-router.get('/', (req, res) => {
+// key word database view
+router.get('/kwdb', (req, res) => {
+    res.viewLocals.layout = 'kwdb';
     res.render('index',res.viewLocals);
 });
-
