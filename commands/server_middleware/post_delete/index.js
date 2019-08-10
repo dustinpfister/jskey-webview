@@ -1,6 +1,5 @@
 // delete a post
-let spawn = require('child_process').spawn,
-fs = require('fs'),
+let fs = require('fs'),
 path = require('path'),
 express = require('express'),
 router = new express.Router();
@@ -16,11 +15,23 @@ module.exports = function(){
         let dir_posts_crypt = path.join(dir_target, '_posts_crypt');
         let fileName = path.join(dir_posts_crypt, req.body.fileName);
         
+        fs.unlink(fileName, (e)=>{
         
-        res.json({
-            fileName: fileName
+            let resObj = {
+                success: true,
+                mess: 'File Deleted',
+                fileName: fileName
+            };
+            
+            if(e){
+                resObj.success = false;
+                resObj.mess = e.message;  
+            }
+            
+            res.json(resObj);
+            
         });
-         
+        
     });
 
     // return the router to be used

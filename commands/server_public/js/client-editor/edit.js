@@ -50,6 +50,7 @@ var Editor = new Vue({
          })
          .then(function(res){
              console.log(res);
+            Editor.getList();
          });
      },
      
@@ -61,12 +62,13 @@ var Editor = new Vue({
         })
         .then(function(res){
             console.log(res);
+            Editor.getList();
         })
         .catch(function(e){
             
             console.log(e);
             
-        })
+        });
      }
   }
 });
