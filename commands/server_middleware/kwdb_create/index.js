@@ -13,7 +13,7 @@ module.exports = function(){
             let dir_target = req.app.get('dir_target'),
             path_kwdb = path.join(dir_target, '_kwdb', req.body.dbName + '.json');
             
-            let kwdb = spawn('jskey-kwdb', ['create', '-t', path_kwdb, '-n', req.body.dbName);
+            let kwdb = spawn('jskey-kwdb', ['create', '-t', path_kwdb, '-n', req.body.dbName]);
              
             let resObj = {
                 success: true,
