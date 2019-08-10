@@ -1,3 +1,18 @@
+## 0.4.x - Alpha V - index command
+  * new index command started that can index content for keywords
+  * first built in function that will be used to build an index
+  * index ranks for keywords in a keyword database can be viewed in the /kwdb webview
+  * can make use of a _index
+
+## 0.3.x - Alpha IV - kwdb path and jskey-kwdb intergration
+  * new /kwdb path that will be used for the keyword database
+  * new middleware kwdb_create that will create a _kwdb folder in the project folder
+  * kwdb_create middleware can create a new keyword database in the _kwdb folder
+  * new keyword database can be created from /kwdb webview
+  * current database can be selected from /kwdb webview
+  * keywords can be added to a database from /kwdb webview
+  * keywords can be removed from a database from /kwdb webview
+
 ## 0.2.6 - Alpha III - post_delete middleware
   * (done) new middleware started called post_delete
   * (done) the post_delete middleware can be used to delete a post from the edit path
