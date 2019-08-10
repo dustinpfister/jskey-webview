@@ -9,7 +9,8 @@ var Editor = new Vue({
             //'<div>fileName: {{ fileName }}</div>'+
             '<textarea v-model="text" rows="20" cols="80"></textarea><br>' +
             '<input type="text" v-model="fileName"><br>' +
-            '<input type="button" value="save" v-on:click="saveFile">'+
+            '<input type="button" value="save" v-on:click="saveFile"><br><br>'+
+            '<input type="button" value="delete" v-on:click="deleteFile">'+
         '</div>' +
     '</div>',
   data : {
@@ -43,7 +44,6 @@ var Editor = new Vue({
      
      // save the current file
      saveFile: function(e){
-         
          this.$http.post('/post_save', {
              fileName: this.$data.fileName,
              text: this.$data.text
@@ -51,7 +51,16 @@ var Editor = new Vue({
          .then(function(res){
              console.log(res);
          });
-         
+     },
+     
+     // delete the current file
+     deleteFile: function(){
+        this.$http.post('/post_delete', {
+            fileName: this.$data.fileName
+        })
+        .then(function(res){
+            console.log(res);
+        });  
      }
   }
 });
