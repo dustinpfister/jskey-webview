@@ -9,12 +9,16 @@ router.use(require('body-parser').json());
 
 module.exports = function(){
 
+    
+    
     router.post('/', (req, res) => {
-        let dir_target = req.app.get('target');
+        let dir_target = req.app.get('dir_target');
         let dir_posts_crypt = path.join(dir_target, '_posts_crypt');
+        let fileName = path.join(dir_posts_crypt, req.body.fileName);
+        
         
         res.json({
-            dir_posts_crypt: dir_posts_crypt
+            fileName: fileName
         });
          
     });

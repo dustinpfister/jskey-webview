@@ -55,12 +55,18 @@ var Editor = new Vue({
      
      // delete the current file
      deleteFile: function(){
+         console.log('pressed');
         this.$http.post('/post_delete', {
             fileName: this.$data.fileName
         })
         .then(function(res){
             console.log(res);
-        });  
+        })
+        .catch(function(e){
+            
+            console.log(e);
+            
+        })
      }
   }
 });
