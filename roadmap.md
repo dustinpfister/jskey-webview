@@ -5,8 +5,8 @@
   * can make use of a _index
 
 ## 0.3.x - Alpha IV - kwdb path and jskey-kwdb intergration
-  * new /kwdb path that will be used for the keyword database
-  * new middleware kwdb_create that will create a _kwdb folder in the project folder
+  * (done) new /kwdb path that will be used for the keyword database
+  * (done) new middleware kwdb_create that will create a _kwdb folder in the project folder
   * kwdb_create middleware can create a new keyword database in the _kwdb folder
   * new keyword database can be created from /kwdb webview
   * current database can be selected from /kwdb webview
