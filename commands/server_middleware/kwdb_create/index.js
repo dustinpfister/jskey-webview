@@ -19,9 +19,12 @@ module.exports = function(){
                 success: true,
                 mess:''
             };
+            kwdb.stderr.on('data', (data) => {
+                console.log(data.toString());
+            });
             
             // when done
-            crypt.on('close', ()=>{
+            kwdb.on('close', ()=>{
                 
                 res.json(resObj);
  

@@ -4,10 +4,28 @@
 
 <script>
 
-    new Vue({
+new Vue({
     
-      el: '#kwdb-interface',
-      template: '<div><input type="text"><input type="button" value="add"><br></div>'
+    el: '#kwdb-interface',
+    template: '<div><input type="text" v-model="dbName"><input v-on:click="createDatabase" type="button" value="add"><br></div>',
+    data:{
+        dbName: 'db'
+    },
+    methods : {
+      
+        createDatabase: function(){
+            this.$http.post('/kwdb_create', {
+                dbName: this.$data.dbName
+             })
+             .then(function(res){
+                 console.log(res);
+             })
+             .catch(function(e){
+                 console.log(e);
+             });
+         }
+      
+      }
     
     });
 
