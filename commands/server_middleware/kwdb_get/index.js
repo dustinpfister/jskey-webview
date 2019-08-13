@@ -10,7 +10,7 @@ module.exports = function(){
     
     router.get('/', (req, res, next) => {
         
-        let dbName = 'db';
+        let dbName = req.query.dbName || 'db';
         let dir_target = req.app.get('dir_target'),
         path_kwdb = path.join(dir_target, '_kwdb', dbName + '.json');
             
