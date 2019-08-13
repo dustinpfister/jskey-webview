@@ -13,12 +13,22 @@ module.exports = function(){
         let dbName = req.query.dbName || 'db';
         let dir_target = req.app.get('dir_target'),
         path_kwdb = path.join(dir_target, '_kwdb', dbName + '.json');
-            
+        
+        let resObj = {
+            success: true
+        };
+        
         fs.readFile(path_kwdb, 'utf8', (e, data ) => {
             
-            let db = JSON.parse(data);
+            resObj.db = {};
+            try{
+               resObj.db = JSON.parse(data);
+            }catch(e){
+                resObj.success = false;
+                resObj.mess = e.message;
+            }
             
-            res.send({db:db});
+            res.send(resObj);
             
         });  
             
