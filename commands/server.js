@@ -58,6 +58,7 @@ exports.handler = function (argv) {
         app.use('/kwdb_create', require(path.join( dir_mw, 'kwdb_create/index.js'))());
         app.use('/kwdb_add', require(path.join( dir_mw, 'kwdb_add/index.js'))());
         app.use('/kwdb_remove', require(path.join( dir_mw, 'kwdb_remove/index.js'))());
+        app.use('/kwdb_get', require(path.join( dir_mw, 'kwdb_get/index.js'))());
         // render   
         app.use(require(path.join( dir_mw, 'render/index.js') ));
         // start server on port

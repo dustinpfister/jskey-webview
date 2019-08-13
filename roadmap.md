@@ -1,5 +1,5 @@
-## 0.4.x - Alpha V - index command
-  * new index command started that can index content for keywords
+## 0.4.x - Alpha V - index middleware
+  * new kwdb_index middleware started that can index content for keywords
   * first built in function that will be used to build an index
   * index ranks for keywords in a keyword database can be viewed in the /kwdb webview
   * can make use of a _index
@@ -12,8 +12,9 @@
   * (done) current database can be selected from /kwdb webview
   * (done) new kwdb_add middleware 
   * (done) keywords can be added to a database from /kwdb webview
-  * new kwdb_remove middleware folder
-  * keywords can be removed from a database from /kwdb webview
+  * (done) new kwdb_remove middleware folder
+  * (done) keywords can be removed from a database from /kwdb webview
+  * new kwdb_get middleware for just getting a list of keywords in the database
   * can list current database in /kwdb path
 
 ## 0.2.6 - Alpha III - post_delete middleware
