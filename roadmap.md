@@ -12,7 +12,7 @@
   * (done) current database can be selected from /kwdb webview
   * (done) new kwdb_add middleware 
   * (done) keywords can be added to a database from /kwdb webview
-  * new kwdb_remove middleware folders
+  * new kwdb_remove middleware folder
   * keywords can be removed from a database from /kwdb webview
   * can list current database in /kwdb path
 

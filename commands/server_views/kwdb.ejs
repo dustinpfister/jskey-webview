@@ -8,8 +8,10 @@ new Vue({
     
     el: '#kwdb-interface',
     template: '<div>' +
-        '<input type="text" v-model="dbName"><input v-on:click="createDatabase" type="button" value="create"><br>'+
-        '<input type="text" v-model="keyword"><input v-on:click="addKeyword" type="button" value="add keyword"><br>'+
+        '<input type="text" v-model="dbName"> <input v-on:click="createDatabase" type="button" value="create"><br>'+
+        '<input type="text" v-model="keyword">' + 
+            ' <input v-on:click="addKeyword" type="button" value="add keyword">' + 
+            ' <input v-on:click="removeKeyword" type="button" value="remove keyword"><br>'+
     '</div>',
     data:{
         dbName: 'db',
@@ -33,6 +35,20 @@ new Vue({
         // add a keyword to the current database
         addKeyword: function(){
             this.$http.post('/kwdb_add', {
+                dbName: this.$data.dbName,
+                keyword: this.$data.keyword
+             })
+             .then(function(res){
+                 console.log(res);
+             })
+             .catch(function(e){
+                 console.log(e);
+             });
+         },
+         
+        // add a keyword to the current database
+        removeKeyword: function(){
+            this.$http.post('/kwdb_remove', {
                 dbName: this.$data.dbName,
                 keyword: this.$data.keyword
              })
