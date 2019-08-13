@@ -17,6 +17,9 @@ module.exports = function(){
         let resObj = {
             success: true,
             mess:'',
+            dbName: dbName,
+            path_kwdb: path_kwdb,
+            dir_target: dir_target,
             db: {}
         };
         
