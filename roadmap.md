@@ -7,8 +7,8 @@
 ## 0.3.x - Alpha IV - kwdb path and jskey-kwdb intergration
   * (done) new /kwdb path that will be used for the keyword database
   * (done) new middleware kwdb_create that will create a _kwdb folder in the project folder
-  * kwdb_create middleware can create a new keyword database in the _kwdb folder
-  * new keyword database can be created from /kwdb webview
+  * (done) kwdb_create middleware can create a new keyword database in the _kwdb folder
+  * (done) new keyword database can be created from /kwdb webview
   * current database can be selected from /kwdb webview
   * new kwdb_add and kwdb_remove middleware folders
   * keywords can be added to a database from /kwdb webview
