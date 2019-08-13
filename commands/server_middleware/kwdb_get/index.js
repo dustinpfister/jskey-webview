@@ -15,17 +15,23 @@ module.exports = function(){
         path_kwdb = path.join(dir_target, '_kwdb', dbName + '.json');
         
         let resObj = {
-            success: true
+            success: true,
+            mess:'',
+            db: {}
         };
         
         fs.readFile(path_kwdb, 'utf8', (e, data ) => {
             
-            resObj.db = {};
-            try{
-               resObj.db = JSON.parse(data);
-            }catch(e){
+            if(e){
                 resObj.success = false;
                 resObj.mess = e.message;
+            }else{
+                try{
+                    resObj.db = JSON.parse(data);
+                }catch(e){
+                    resObj.success = false;
+                    resObj.mess = e.message;
+                }
             }
             
             res.send(resObj);
