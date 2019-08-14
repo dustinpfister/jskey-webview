@@ -1,20 +1,18 @@
 // build index lists for posts and keywords
 let spawn = require('child_process').spawn,
+fs = require('fs'),
 path = require('path'),
 express = require('express'),
 router = new express.Router();
 
 router.use(require('body-parser').json());
 
-module.exports = function(){
+module.exports = function(key){
     
     router.get('/', [
        
        // set up resObj
        (req, res, next) => {
-        
-           let dir_target = req.app.get('dir_target'),
-           path_kwdb = path.join(dir_target, '_kwdb', req.body.dbName + '.json');
         
            res.resObj = {
                 success : false,
@@ -36,7 +34,7 @@ module.exports = function(){
                 if(r.keyword){
                     next();
                 }else{
-                    r.mess = 'in keyword mode a keyword must be given'
+                    r.mess = 'in keyword mode a keyword must be given';
                     res.json(r);
                 }
             }else{
@@ -51,12 +49,41 @@ module.exports = function(){
                 if(r.post){
                     next();
                 }else{
-                    r.mess = 'in post mode a keyword is optional but must give a post'
+                    r.mess = 'in post mode a keyword is optional but must give a post';
                     res.json(r);
                 }
             }else{
                 next();
             }
+        },
+        
+        // POST MODE
+        (req, res, next) => {
+            
+            let dir_target = req.app.get('dir_target'),
+            path_kwdb = path.join(dir_target, '_kwdb', req.body.dbName + '.json'),
+            dir_post_crypt = path.join(dir_target, '_posts_crypt');
+            
+            if(res.resObj.mode === 'post'){
+            
+                fs.readFile(path.join(dir_post_crypt, res.resObj.post), 'utf8', (e, data)=>{
+                
+                    console.log(e)
+                    console.log(data);
+                    
+                    next();
+                
+                
+                });
+            
+            }else{
+                
+                next();
+                
+            }
+            
+            
+            
         },
         
         
