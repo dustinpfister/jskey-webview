@@ -1,6 +1,6 @@
 {
   "name": "jskey-webview",
-  "version": "0.2.6",
+  "version": "0.3.22",
   "description": "The aim of this project is to provide a webview that I can use with mu other jskey tools to create and maintain websites.",
   "main": "index.js",
   "bin": {

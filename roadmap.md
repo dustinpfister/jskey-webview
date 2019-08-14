@@ -4,7 +4,7 @@
   * index ranks for keywords in a keyword database can be viewed in the /kwdb webview
   * can make use of a _index
 
-## 0.3.x - Alpha IV - kwdb path and basic jskey-kwdb intergration
+## 0.3.x - Alpha IV - kwdb path and basic jskey-kwdb integration
   * (done) new /kwdb path that will be used for the keyword database
   * (done) new middleware kwdb_create that will create a _kwdb folder in the project folder
   * (done) kwdb_create middleware can create a new keyword database in the _kwdb folder
@@ -15,7 +15,7 @@
   * (done) new kwdb_remove middleware folder
   * (done) keywords can be removed from a database from /kwdb webview
   * (done) new kwdb_get middleware for just getting a list of keywords in the database
-  * can list current database in /kwdb path
+  * (done) can list current database in /kwdb path
 
 ## 0.2.6 - Alpha III - post_delete middleware
   * (done) new middleware started called post_delete
