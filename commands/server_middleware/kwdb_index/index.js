@@ -10,19 +10,21 @@ module.exports = function(){
     
     router.get('/', (req, res, next) => {
         
-            let dir_target = req.app.get('dir_target'),
-            path_kwdb = path.join(dir_target, '_kwdb', req.body.dbName + '.json');
+        let dir_target = req.app.get('dir_target'),
+        path_kwdb = path.join(dir_target, '_kwdb', req.body.dbName + '.json');
                 
-            let resObj = {
-                success : false,
-                mess: 'default message'
-            };
-            
-            res.json(resObj);
+        res.resObj = {
+            success : false,
+            mess: 'default message',
+            mode : req.query.m || 'post', // for a post or keyword
+            post: req.query.p || false,
+            keyword: req.query.k || false
+        };
+        
+        
+        res.json(res.resObj);
  
-            
-        }
-    );
+    });
 
     // return the router to be used
     // in main server.js file
