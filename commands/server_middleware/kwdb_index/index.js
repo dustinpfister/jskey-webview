@@ -85,6 +85,32 @@ module.exports = function(key){
                     crypt.on('close', ()=>{
                         
                         console.log(text);
+                        
+                        let weight = spawn('jskey-kwdb',['weight','-k', 'foo']);
+                        
+                        weight.stdout.on('data', (data) => {
+                           
+                            console.log('weight');
+                            console.log(data.toString());
+                            
+                        });
+                        
+                        weight.stderr.on('data', (data) => {
+                           
+                            console.log('weight error');
+                            console.log(data.toString());
+                            
+                        });
+                        
+                        weight.on('close', (data) => {
+                           
+                            console.log('weight close');
+                            
+                        });
+                        
+                        
+                        weight.stdin.write(text);
+                        weight.stdin.end();
            
                         next();
             
