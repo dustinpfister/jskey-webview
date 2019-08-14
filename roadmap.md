@@ -1,10 +1,11 @@
 ## 0.4.x - Alpha V - index middleware
   * new kwdb_index middleware started that can index content for keywords
-  * first built in function that will be used to build an index
-  * index ranks for keywords in a keyword database can be viewed in the /kwdb webview
-  * can make use of a _index
+  * first built in weight function that will be used with kwdb weight command
+  * \_kwdb_ws for user defined weight function scripts
+  * for each post have a list of top ranking keywords in the /edit path
+  * for each keyword have a list of posts that rank for it in the /kwdb path
 
-## 0.3.x - Alpha IV - kwdb path and basic jskey-kwdb integration
+## 0.3.22 - Alpha IV - kwdb path and basic jskey-kwdb integration
   * (done) new /kwdb path that will be used for the keyword database
   * (done) new middleware kwdb_create that will create a _kwdb folder in the project folder
   * (done) kwdb_create middleware can create a new keyword database in the _kwdb folder
