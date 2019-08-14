@@ -29,33 +29,36 @@ module.exports = function(){
  
         },
         
-        // check resObj
+        // keyword mode resObj check
         (req, res, next) => {
-            
             let r = res.resObj;
-            
-            if(r.keyword){
-                
-                if((r.mode === 'post' && r.post) || r.mode === 'keyword'){
-                    
+            if(r.mode === 'keyword'){
+                if(r.keyword){
                     next();
-                    
                 }else{
-                    
-                    r.mess = 'keyword given but in post mode and no post if given';
+                    r.mess = 'in keyword mode a keyword must be given'
                     res.json(r);
-                    
                 }
-                
             }else{
-            
-                r.mess = 'no keyword given or no post given if in post mode';
-                
-                res.json(r);
-                
+                next();
             }
-            
         },
+        
+        // post mode resobj check
+        (req, res, next) => {
+            let r = res.resObj;
+            if(r.mode === 'post'){
+                if(r.post){
+                    next();
+                }else{
+                    r.mess = 'in post mode a keyword is optional but must give a post'
+                    res.json(r);
+                }
+            }else{
+                next();
+            }
+        },
+        
         
         // send resObj
         (req,res) =>{

@@ -1,6 +1,6 @@
 ## 0.4.x - Alpha V - index middleware
   * (done) new kwdb_index middleware started that can index content for keywords
-  * using query strings for get posts to kwdb_index root
+  * (done) using query strings for get posts to kwdb_index root
   * first built in weight function that will be used with kwdb weight command
   * \_kwdb_ws for user defined weight function scripts
   * for each post have a list of top ranking keywords in the /edit path
