@@ -14,7 +14,7 @@
   * (done) keywords can be added to a database from /kwdb webview
   * (done) new kwdb_remove middleware folder
   * (done) keywords can be removed from a database from /kwdb webview
-  * new kwdb_get middleware for just getting a list of keywords in the database
+  * (done) new kwdb_get middleware for just getting a list of keywords in the database
   * can list current database in /kwdb path
 
 ## 0.2.6 - Alpha III - post_delete middleware

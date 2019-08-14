@@ -12,10 +12,14 @@ new Vue({
         '<input type="text" v-model="keyword">' + 
             ' <input v-on:click="addKeyword" type="button" value="add keyword">' + 
             ' <input v-on:click="removeKeyword" type="button" value="remove keyword"><br>'+
+        '<div><div v-for="kw in db.keywords" >{{kw.keyword}}</div></div>' +
     '</div>',
     data:{
         dbName: 'db',
-        keyword: 'foo'
+        keyword: 'foo',
+        db:{
+           keywords: [{keyword:'foo'}]
+        }
     },
     methods : {
       
