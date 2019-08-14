@@ -54,6 +54,7 @@ var vm = new Vue({
              })
              .then(function(res){
                  console.log(res);
+                 return this.getDatabase();
              })
              .catch(function(e){
                  console.log(e);
@@ -68,6 +69,7 @@ var vm = new Vue({
              })
              .then(function(res){
                  console.log(res);
+                 return this.getDatabase();
              })
              .catch(function(e){
                  console.log(e);
