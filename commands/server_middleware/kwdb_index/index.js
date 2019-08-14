@@ -71,8 +71,26 @@ module.exports = function(key){
                     console.log(e)
                     console.log(data);
                     
-                    next();
-                
+                    let crypt = spawn('jskey-crypt', ['pipe', '-p', key.password, '-s', key.random]);
+                    
+                    let text = '';
+                    crypt.stdout.on('data', (data)=>{
+                         text += data.toString();
+                         // !!! should not be done here
+                         // but it seems to work okay for now
+                         crypt.stdin.end();
+                    });
+        
+                    // send text when
+                    crypt.on('close', ()=>{
+                        
+                        console.log(text);
+           
+                        next();
+            
+                    });
+        
+                    crypt.stdin.write(data,'utf8');
                 
                 });
             
